@@ -9,7 +9,7 @@ BUILD_DIR = build
 SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
-.DEFAULT_GOAL = all
+.DEFAULT_GOAL = clean
 
 .PHONY: clean
 clean:
@@ -28,5 +28,6 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p ${BUILD_DIR}
 	$(CC) $(CFLAGS) -c $< -o $@ $(LDFLAGS)
 
-.PHONY: all
-all: $(OBJS)
+.PHONY: build
+build: $(OBJS)
+	$(CC) $(CFLAGS) $< -o a.out $(LDFLAGS)
